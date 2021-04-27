@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on Swastik Acharyya</title>
+    <link>https://arpangreat.github.io/tags/vim/</link>
+    <description>Recent content in Vim on Swastik Acharyya</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Apr 2021 17:06:45 +0530</lastBuildDate><atom:link href="https://arpangreat.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Portingviminlua</title>
+      <link>https://arpangreat.github.io/post/portingviminlua/</link>
+      <pubDate>Tue, 27 Apr 2021 17:06:45 +0530</pubDate>
+      
+      <guid>https://arpangreat.github.io/post/portingviminlua/</guid>
+      <description>&lt;h1 id=&#34;porting-neovim-config-in-lua--why-and-how-&#34;&gt;Porting Neovim config in Lua &amp;hellip; Why and How ?&lt;/h1&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

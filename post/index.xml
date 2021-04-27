@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Swastik Acharyya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Apr 2021 00:26:59 +0530</lastBuildDate><atom:link href="https://arpangreat.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Apr 2021 17:06:45 +0530</lastBuildDate><atom:link href="https://arpangreat.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Portingviminlua</title>
+      <link>https://arpangreat.github.io/post/portingviminlua/</link>
+      <pubDate>Tue, 27 Apr 2021 17:06:45 +0530</pubDate>
+      
+      <guid>https://arpangreat.github.io/post/portingviminlua/</guid>
+      <description>&lt;h1 id=&#34;porting-neovim-config-in-lua--why-and-how-&#34;&gt;Porting Neovim config in Lua &amp;hellip; Why and How ?&lt;/h1&gt;</description>
+    </item>
+    
     <item>
       <title>27April 2021</title>
       <link>https://arpangreat.github.io/post/27april-2021/</link>

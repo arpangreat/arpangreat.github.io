@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://arpangreat.github.io/tags/lua/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
+    <loc>https://arpangreat.github.io/tags/neovim/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
+    <loc>https://arpangreat.github.io/post/portingviminlua/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
+    <loc>https://arpangreat.github.io/post/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
+    <loc>https://arpangreat.github.io/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
+    <loc>https://arpangreat.github.io/tags/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
+    <loc>https://arpangreat.github.io/tags/tutorial/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
+    <loc>https://arpangreat.github.io/tags/vim/</loc>
+    <lastmod>2021-04-27T17:06:45+05:30</lastmod>
+  </url><url>
     <loc>https://arpangreat.github.io/post/27april-2021/</loc>
     <lastmod>2021-04-27T00:26:59+05:30</lastmod>
   </url><url>
@@ -9,15 +33,6 @@
     <lastmod>2021-04-27T00:26:59+05:30</lastmod>
   </url><url>
     <loc>https://arpangreat.github.io/tags/personal/</loc>
-    <lastmod>2021-04-27T00:26:59+05:30</lastmod>
-  </url><url>
-    <loc>https://arpangreat.github.io/post/</loc>
-    <lastmod>2021-04-27T00:26:59+05:30</lastmod>
-  </url><url>
-    <loc>https://arpangreat.github.io/</loc>
-    <lastmod>2021-04-27T00:26:59+05:30</lastmod>
-  </url><url>
-    <loc>https://arpangreat.github.io/tags/</loc>
     <lastmod>2021-04-27T00:26:59+05:30</lastmod>
   </url><url>
     <loc>https://arpangreat.github.io/top/about/</loc>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Swastik Acharyya">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://arpangreat.github.io/images/main_go_wideandtall_darklayer.jpeg">
+    <meta property="twitter:image" content="https://arpangreat.github.io/images/main_go_wideandtall_darklayer.jpeg" />
+    
+
+    
+    <meta name="title" content="Portingviminlua" />
+    <meta property="og:title" content="Portingviminlua" />
+    <meta property="twitter:title" content="Portingviminlua" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Swastik, Acharyya, Raspberry, Pi, Docker, Kubernetes, Go, Golang, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Portingviminlua-Swastik Acharyya</title>
+
+    <link rel="canonical" href="/post/portingviminlua/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Swastik Acharyya</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/images/main_go_wideandtall_darklayer.jpeg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/neovim" title="Neovim">
+                            Neovim
+                        </a>
+                        
+                        <a class="tag" href="/tags/vim" title="Vim">
+                            Vim
+                        </a>
+                        
+                        <a class="tag" href="/tags/lua" title="Lua">
+                            Lua
+                        </a>
+                        
+                        <a class="tag" href="/tags/tutorial" title="Tutorial">
+                            Tutorial
+                        </a>
+                        
+                    </div>
+                    <h1>Portingviminlua</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Swastik Acharyya
+                         
+                        on 
+                        Tuesday, April 27, 2021
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#so-today--we-are-going-to-port-our-neovim-config-in-lua-language-">So today , we are going to port our neovim Config in Lua language &hellip;</a>
+      <ul>
+        <li><a href="#but--why-">But , Why ?</a></li>
+        <li><a href="#how-">How ?</a></li>
+      </ul>
+    </li>
+    <li><a href="#some-references">Some References</a>
+      <ul>
+        <li><a href="#if-you-have-any-question-or-confusion-about-anything--connect-with-me--any-of-my-social-links-below">If you have any, question or confusion about anything , connect with me , any of my social links below</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h1 id="porting-neovim-config-in-lua--why-and-how-">Porting Neovim config in Lua &hellip; Why and How ?</h1>
+<p>at some point of time , we all have to tweak our configs , and time by time , we all make our configs more complex .</p>
+<h2 id="so-today--we-are-going-to-port-our-neovim-config-in-lua-language-">So today , we are going to port our neovim Config in Lua language &hellip;</h2>
+<h3 id="but--why-">But , Why ?</h3>
+<p>well the most simple answer would be , to make more complex and functional config . When Bram Moolenaar made vim , he made vimscript to write configs for vim . But the main fact is , that it is not functional language so we cann&rsquo;t write complex code to do certain tasks.</p>
+<p><strong>Lua in the rescue</strong></p>
+<p>Neovim supports Lua from default and coolest part is it is a functional programming language , an example would be , <em><strong>you can write games in Lua with Love2d game engine</strong></em>.
+So we can write multi-functional and complex code with ease. So let&rsquo;s jump into it .</p>
+<h3 id="how-">How ?</h3>
+<p>Now comes up the real part , tide your seatbelts and let&rsquo;s dive into it &hellip;</p>
+<h4 id="the-base">The Base</h4>
+<p>Neovim supports <code>init.lua</code> file instead of <code>init.vim</code> , so we are gonna make a <code>init.lua</code> file inside <code>~/.config/nvim/</code></p>
+<blockquote>
+<p>Remember to backup or delete your <code>init.vim</code> if existed</p>
+</blockquote>
+<h4 id="other-lua-files">Other Lua files</h4>
+<p>To manage your config with ease , you should break down your config with naming conventions for different , tasks , like for mappings , <code>mappings.lua</code> etc.</p>
+<p>The Basic File structure of nvim config is like that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">📂 ~/.config/nvim
+├── 📁 after
+├── 📁 ftplugin
+├── 📂 lua
+│  ├── 🌑 myluamodule.lua
+│  └── 📂 other_modules
+│     ├── 🌑 anothermodule.lua
+│     └── 🌑 init.lua
+├── 📁 pack
+├── 📁 plugin
+├── 📁 syntax
+└── 🇻 init.vim
+</code></pre></div><p>so lua files are typically located inside <code>Lua/</code> and it can have submoules as well.</p>
+<p>To load <code>myluamodule.lua</code> we have to call:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)
+</code></pre></div><p>similarly to load <code>other_modules/anothermodule.lua</code> we have to call:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;other_modules.anothermodule&#39;</span>)
+</code></pre></div><p>Notice that while requiring these files, we are not calling <code>.lua</code> extension.</p>
+<p>another thing to Remember if you are calling any <code>lua</code> file in your <code>init.vim</code> , you have to append <code>lua</code> before everyline:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">lua</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">lua</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;other_modules.anothermodule&#39;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>just like this.</p>
+<p>Another thing to remenber if you want to call the whole <code>other_modules/</code> at once , you can simply call:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;other_modules&#39;</span>)
+</code></pre></div><p>but in that case you have to have a <code>init.lua</code> under that directory.</p>
+<h5 id="tip">Tip</h5>
+<p>to call a bigger chunk of <code>Lua</code> code inside your <code>init.vim</code> , just call like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">lua</span> &lt;&lt; <span style="color:#a6e22e">EOF</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">local</span> <span style="color:#a6e22e">mod</span> = <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">local</span> <span style="color:#a6e22e">chars</span> = {<span style="color:#e6db74">&#39;\&#39;</span>, <span style="color:#e6db74">&#39;|&#39;</span>, <span style="color:#e6db74">&#39;~&#39;</span>}<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">for</span> <span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">m</span> <span style="color:#a6e22e">in</span> <span style="color:#a6e22e">ipairs</span>(<span style="color:#a6e22e">chars</span>) <span style="color:#a6e22e">do</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>	<span style="color:#a6e22e">mod</span>.<span style="color:#a6e22e">method</span>(<span style="color:#a6e22e">v</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">end</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">chars</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">EOF</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>To source a lua file , just call in command mode:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">:<span style="color:#a6e22e">luafile</span> % # <span style="color:#a6e22e">for</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">current</span> <span style="color:#a6e22e">file</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>:<span style="color:#a6e22e">luafile</span> <span style="color:#a6e22e">some</span><span style="color:#e6db74">/thing/</span><span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">lua</span> # <span style="color:#a6e22e">for</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">certain</span> <span style="color:#a6e22e">file</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h5 id="luafile-vs-require">luafile vs require():</h5>
+<p>You might be wondering what the difference between <code>lua require()</code> and <code>luafile</code> is and whether you should use one over the other. They have different use cases:</p>
+<ul>
+<li><code>require()</code>:
+<ul>
+<li>is a built-in Lua function. It allows you to take advantage of Lua&rsquo;s module system</li>
+<li>searches for modules in <code>lua</code> folders in your <code>runtimepath</code></li>
+<li>keeps track of what modules have been loaded and prevents a script from being parsed and executed a second time. If you change the file containing the code for a module and try to <code>require()</code> it a second time while Neovim is running, the module will not actually update</li>
+</ul>
+</li>
+<li><code>:luafile</code>:
+<ul>
+<li>is an Ex command. It does not support modules</li>
+<li>takes a path that is either absolute or relative to the working directory of the current window</li>
+<li>executes the contents of a script regardless of whether it has been executed before</li>
+</ul>
+</li>
+</ul>
+<h4 id="the-sets">The sets</h4>
+<p>The most common part of any <code>vim configuratins</code> is sets, like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">smarttab</span> <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">number</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">relativenumber</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">cursorline</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">termguicolors</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">nobackup</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">filetype</span> <span style="color:#a6e22e">plugin</span> <span style="color:#a6e22e">on</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">indent</span> <span style="color:#a6e22e">on</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">syntex</span> <span style="color:#a6e22e">on</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>To achieve the same thing in <code>lua</code> we have a different but more verbose approach:</p>
+<ul>
+<li><code>vim.o.{option}</code>: global options</li>
+<li><code>vim.bo.{option}</code>: buffer-local options</li>
+<li><code>vim.wo.{option}</code>: window-local options</li>
+<li><code>vim.b.{name}</code>: buffer variables</li>
+<li><code>vim.w.{name}</code>: window variables</li>
+<li><code>vim.t.{name}</code>: tabpage variables</li>
+<li><code>vim.v.{name}</code>: predefined Vim variables</li>
+<li><code>vim.env.{name}</code>: environment variables</li>
+</ul>
+<p>So now the sets will be like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Ignorecases</span>
+vim.o.ignorecase <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.o.smartcase <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+
+<span style="color:#75715e">-- Search</span>
+vim.o.hlsearch <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.o.incsearch <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.o.inccommand <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;split&#34;</span>
+
+<span style="color:#75715e">-- Vim UI</span>
+vim.o.smartindent <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.o.wrap <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.o.colorcolumn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;120&#39;</span>
+vim.o.showcmd <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.o.tabstop <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+vim.o.softtabstop <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+vim.o.signcolumn<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
+vim.o.scrolloff <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
+vim.o.showmode <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.o.completeopt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;menuone,noinsert,noselect&#34;</span>
+vim.o.hidden <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">-- vim.o.include</span>
+vim.o.display <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lastline&#34;</span>
+vim.o.backspace <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;indent,eol,start&#34;</span>
+
+<span style="color:#75715e">-- Visuals</span>
+vim.o.syntax <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;enable&#34;</span>
+<span style="color:#75715e">-- vim.o.filetype = &#34;plugin on&#34;</span>
+vim.o.t_Co<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;256&#34;</span>
+<span style="color:#75715e">-- vim.api.nvim_set_option(&#39;t_Co&#39;,256)</span>
+vim.o.termguicolors <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">-- vim.o.encodingvim.o.hidden = true</span>
+vim.o.include <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+vim.o.display <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lastline&#34;</span>
+vim.o.encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>
+<span style="color:#75715e">-- vim.wo.winblend = 100</span>
+<span style="color:#75715e">-- vim.api.nvim_exec([[set winblend=100]], true)</span>
+<span style="color:#75715e">-- Numbers</span>
+vim.wo.number <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.wo.relativenumber <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.wo.cursorline <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">-- vim.wo.cursorcolumn = true</span>
+
+<span style="color:#75715e">-- Utils</span>
+vim.o.compatible <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.o.mouse<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;a&#39;</span>
+vim.o.autoindent <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.o.backup <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.o.undofile <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.o.undodir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;~/.vim/undodir&#34;</span>
+vim.o.swapfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.o.shada<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;!,&#39;1000,&lt;50,s10,h&#34;</span>
+vim.o.viminfo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#39;100,n$HOME/.vim/files/info/viminfo&#34;</span>
+vim.o.clipboard <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;unnamedplus&#34;</span>
+
+<span style="color:#75715e">-- Times</span>
+vim.o.ttimeoutlen <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+vim.o.updatetime <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+vim.o.shortmess <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I&#34;</span>
+vim.o.laststatus <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><p>just like that &hellip;</p>
+<h4 id="the-keymappings">The Keymappings</h4>
+<p>In vimscript we write , the Keymappings like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">Leader</span> = <span style="color:#e6db74">&#34; &#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">Leader</span>&gt;<span style="color:#a6e22e">tg</span> :<span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;tg&#34;</span>&lt;<span style="color:#a6e22e">CR</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>But in <code>Lua</code> , we can call it like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.g.mapleader <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span>
+
+vim.api.nvim_set_keymap(<span style="color:#e6db74">&#39;n&#39;</span>, <span style="color:#e6db74">&#39;&lt;Leader&gt;tg&#39;</span>, <span style="color:#e6db74">&#39;:echo &#34;tg&#34;&lt;CR&gt;&#39;</span>, { noremap <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> , silent <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span> , expr <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>})
+</code></pre></div><p>Tutorial ,</p>
+<p>the <code>vim.api.nvim_set_keymap</code> is a Meta-accessors , to make a keymap in lua . Inside , the first parenthesis <code>()</code></p>
+<ul>
+<li>&lsquo;n&rsquo; , calls for normal mode . same thing for , &lsquo;i&rsquo; for insert mode, &rsquo;t' for terminal mode</li>
+<li>&lsquo;<Leader>tg&rsquo; or the second parameter is the trigger that , you are calling to do a task</li>
+<li>&lsquo;:echo &ldquo;tg&rdquo;<CR>&rsquo; or the third parameter is the actual function or task you are gonna call after make the trigger.</li>
+<li>The fourth parameter { noremap = true , silent = false , expr = false} is gonna take your accessors to make it is , call <code>true</code> for those things which will gonna work while calling the trigger.</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>call , the first, second and third parameter in quotes.</p>
+</li>
+<li>
+<p>if any of <code>noremap, silent, expr</code> is false , you don&rsquo;t need to call it though .</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="calling-vim-command-inside-lua">Calling <code>vim command</code> inside <code>Lua</code></h4>
+<p>To call vim command in lua, do:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">&#34;the vim command ...&#34;</span>)
+</code></pre></div><p>To call a multiline vim command in lua, call:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
+</span><span style="color:#e6db74">this is a
+</span><span style="color:#e6db74">multiline
+</span><span style="color:#e6db74">vim
+</span><span style="color:#e6db74">command ...
+</span><span style="color:#e6db74">]]</span>)
+</code></pre></div><h4 id="autocommands">Autocommands</h4>
+<p>Neovim still doesn&rsquo;t support calling Autocommands in lua ,
+To  achieve autocommand in <code>lua</code></p>
+<ul>
+<li>first approach</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
+</span><span style="color:#e6db74">augroup highlight_yank
+</span><span style="color:#e6db74">    autocmd!
+</span><span style="color:#e6db74">    autocmd TextYankPost * silent! lua require&#39;vim.highlight&#39;.on_yank({timeout = 40})
+</span><span style="color:#e6db74">augroup END
+</span><span style="color:#e6db74">]]</span>)
+</code></pre></div><blockquote>
+<p>but for some reason, this doesn&rsquo;t work everytime.</p>
+</blockquote>
+<ul>
+<li>second approach</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.api.nvim_exec(<span style="color:#e6db74">[[
+</span><span style="color:#e6db74">augroup highlight_yank
+</span><span style="color:#e6db74">    autocmd!
+</span><span style="color:#e6db74">    autocmd TextYankPost * silent! lua require&#39;vim.highlight&#39;.on_yank({timeout = 40})
+</span><span style="color:#e6db74">augroup END
+</span><span style="color:#e6db74">]]</span>, <span style="color:#66d9ef">true</span>)
+</code></pre></div><p>the <code>vim.api.nvim_exec</code> is another Meta-accessor for calling a nvim command inside lua.</p>
+<blockquote>
+<p>you have specify <code>true</code> after the ]], inside <code>vim.api.nvim_exec</code></p>
+</blockquote>
+<h4 id="functions-loops-if">Functions, loops, if</h4>
+<p>To call a function or loops or if inside <code>lua</code></p>
+<ul>
+<li>first approach</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
+</span><span style="color:#e6db74">function! GitStatus()
+</span><span style="color:#e6db74">  let [a,m,r] = GitGutterGetHunkSummary()
+</span><span style="color:#e6db74">  return printf(&#39;+%d ~%d -%d&#39;, a, m, r)
+</span><span style="color:#e6db74">endfunction
+</span><span style="color:#e6db74">set statusline+=%{GitStatus()}
+</span><span style="color:#e6db74">]]</span>)
+
+vim.cmd(<span style="color:#e6db74">[[
+</span><span style="color:#e6db74">if (empty($TMUX))
+</span><span style="color:#e6db74">    if (has(&#34;nvim&#34;))
+</span><span style="color:#e6db74">	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+</span><span style="color:#e6db74">    endif
+</span><span style="color:#e6db74">    if (has(&#34;termguicolors&#34;))
+</span><span style="color:#e6db74">	set termguicolors
+</span><span style="color:#e6db74">    endif
+</span><span style="color:#e6db74">endif
+</span><span style="color:#e6db74">]]</span>)
+</code></pre></div><blockquote>
+<p>but for some reason, if this doesn&rsquo;t work .</p>
+</blockquote>
+<ul>
+<li>second approach</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.api.nvim_exec(<span style="color:#e6db74">[[
+</span><span style="color:#e6db74">function! GitStatus()
+</span><span style="color:#e6db74">  let [a,m,r] = GitGutterGetHunkSummary()
+</span><span style="color:#e6db74">  return printf(&#39;+%d ~%d -%d&#39;, a, m, r)
+</span><span style="color:#e6db74">endfunction
+</span><span style="color:#e6db74">set statusline+=%{GitStatus()}
+</span><span style="color:#e6db74">]]</span>, <span style="color:#66d9ef">true</span>)
+
+vim.api.nvim_exec(<span style="color:#e6db74">[[
+</span><span style="color:#e6db74">if (empty($TMUX))
+</span><span style="color:#e6db74">    if (has(&#34;nvim&#34;))
+</span><span style="color:#e6db74">	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+</span><span style="color:#e6db74">    endif
+</span><span style="color:#e6db74">    if (has(&#34;termguicolors&#34;))
+</span><span style="color:#e6db74">	set termguicolors
+</span><span style="color:#e6db74">    endif
+</span><span style="color:#e6db74">endif
+</span><span style="color:#e6db74">]]</span>, <span style="color:#66d9ef">true</span>)
+</code></pre></div><h4 id="source-any-file-vim-file-in-lua">Source any file <code>.vim</code> file in lua</h4>
+<p>just call:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">&#34;source the/file/path/here.lua&#34;</span>)
+</code></pre></div><h2 id="some-references">Some References</h2>
+<ul>
+<li><a href="https://github.com/nanotee/nvim-lua-guide">A verbose and full guide for lua Tutorial</a></li>
+<li><a href="https://youtu.be/IP3J56sKtn0">A great talk by Nvim core developer <strong>Tj Devries</strong></a></li>
+<li><a href="https://github.com/rockerBOO/awesome-neovim">List of some plugins written in Lua by <strong>rockerBOO</strong></a></li>
+<li><a href="https://github.com/arpangreat/dotfiles/tree/master/nvim">My Nvim Dotfiles</a></li>
+<li><a href="https://github.com/nvim-telescope/telescope.nvim">The greatest file picker ever existed</a></li>
+</ul>
+<h3 id="if-you-have-any-question-or-confusion-about-anything--connect-with-me--any-of-my-social-links-below">If you have any, question or confusion about anything , connect with me , any of my social links below</h3>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/27april-2021/" data-toggle="tooltip" data-placement="top" title="27April 2021">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                <script>
+  var id =  null ;
+
+  if (id)
+  {
+    let url = "https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY/issues/".concat(id);
+    let api_url = "https://api.github.com/repos/YOUR-ACCOUNT/YOUR-REPOSITORY/issues/".concat(id, "/comments");
+    
+    var commentsDiv = document.getElementById("comments");
+
+    let xhr = new XMLHttpRequest();
+    xhr.responseType = "json";
+    xhr.open("GET", api_url);
+    xhr.setRequestHeader("Accept", "application/vnd.github.v3.html+json");
+    xhr.send();
+
+    xhr.onload = function()
+    {
+      if (xhr.status != 200)
+      {
+        let errorText = document.createElement("p");
+        errorText.innerHTML = "<i>Comments for this post yet are not opened yet (or you have GitHub scripts disabled).</i>";
+        commentsDiv.appendChild(errorText);
+      }
+      else
+      {
+        let comments = xhr.response;
+
+        let mainHeader = document.createElement("h2");
+        mainHeader.innerHTML = "Comments: ".concat(comments.length);
+        commentsDiv.appendChild(mainHeader);
+
+        let issueLink = document.createElement("p");
+        issueLink.innerHTML = "<i>You can leave a comment using this <a href='".concat(url, "'>GitHub issue</a>.</i>");
+        commentsDiv.appendChild(issueLink);
+        
+        comments.forEach(function(comment)
+        {
+            let commentContent = document.createElement("div");
+            commentContent.setAttribute('class', 'gh-comment')
+            commentContent.innerHTML = "".concat(
+                "<div class='gh-header'>",
+                  "<img src='", comment.user.avatar_url, "' />",
+                  "<div style='margin:auto 0;'>",
+                    "<b><a class='gh-username' href='", comment.user.html_url, "'>", comment.user.login, "</a></b>",
+                    " commented at <em>", new Date(comment.created_at), "</em>",
+                  "</div>",
+                "</div>",
+                "<div class='gh-body'>",
+                  comment.body_html,
+                "</div>"
+            );
+            commentsDiv.appendChild(commentContent);
+        });
+      }
+    };
+
+    xhr.onerror = function()
+    {
+      let errorText = document.createElement("p");
+      errorText.innerHTML = "<i>Some error loading comments.</i>";
+      commentsDiv.appendChild(errorText);
+    };
+  }
+</script>
+
+<style>
+#comments {
+    margin-top: 30px;
+}
+
+.gh-comment {
+  border: 1px solid #d1d5da;
+  margin-top: 15px;
+}
+
+.gh-header {
+  display: flex;
+  color: #586069;
+  background-color: #f6f8fa;
+  border-bottom: 1px solid #d1d5da;
+  padding: 10px;
+  font-size: 85%;
+}
+
+.gh-username {
+  color: #586069;
+}
+
+.gh-body {
+  padding: 10px 15px;
+}
+
+.gh-body code {
+  font-size: 120%;
+}
+.gh-body > div.highlight > pre {
+  padding: 10px;
+  color: lime;
+  font-size: 120%;
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.gh-comment p {
+  margin: 0px 0px 10px 0px;
+}
+.gh-comment p:last-child {
+  margin: 0;
+}
+
+.gh-header > img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+</style>
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+
+</article>
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Swastik Acharyya" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:arpanthegreat41@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    <li>
+                        <a href="https://twitter.com/AcharyyaSwastik">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/arpangreat">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Swastik Acharyya 2021
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
