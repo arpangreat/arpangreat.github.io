@@ -251,8 +251,8 @@ So we can write multi-functional and complex code with ease. So let&rsquo;s jump
 ├── 📁 pack
 ├── 📁 plugin
 ├── 📁 syntax
-└── 🇻 init.vim
-</code></pre></div><p>so lua files are typically located inside <code>Lua/</code> and it can have submoules as well.</p>
+└──  init.lua
+</code></pre></div><p>so lua files are typically located inside <code>Lua/</code> and it can have submodules as well.</p>
 <p>To load <code>myluamodule.lua</code> we have to call:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)
 </code></pre></div><p>similarly to load <code>other_modules/anothermodule.lua</code> we have to call:</p>
@@ -496,7 +496,7 @@ vim.api.nvim_exec(<span style="color:#e6db74">[[
 </span><span style="color:#e6db74">    endif
 </span><span style="color:#e6db74">endif
 </span><span style="color:#e6db74">]]</span>, <span style="color:#66d9ef">true</span>)
-</code></pre></div><h4 id="source-any-file-vim-file-in-lua">Source any file <code>.vim</code> file in lua</h4>
+</code></pre></div><h4 id="to-source-any-vim-file-in-lua">To Source any <code>.vim</code> file in lua</h4>
 <p>just call:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">&#34;source the/file/path/here.lua&#34;</span>)
 </code></pre></div><h2 id="some-references">Some References</h2>
