@@ -240,7 +240,7 @@ So we can write multi-functional and complex code with ease. So let&rsquo;s jump
 <h4 id="other-lua-files">Other Lua files</h4>
 <p>To manage your config with ease , you should break down your config with naming conventions for different , tasks , like for mappings , <code>mappings.lua</code> etc.</p>
 <p>The Basic File structure of nvim config is like that:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">📂 ~/.config/nvim
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">📂 ~/.config/nvim
 ├── 📁 after
 ├── 📁 ftplugin
 ├── 📂 lua
@@ -254,21 +254,21 @@ So we can write multi-functional and complex code with ease. So let&rsquo;s jump
 └──  init.lua
 </code></pre></div><p>so lua files are typically located inside <code>Lua/</code> and it can have submodules as well.</p>
 <p>To load <code>myluamodule.lua</code> we have to call:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)
 </code></pre></div><p>similarly to load <code>other_modules/anothermodule.lua</code> we have to call:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;other_modules.anothermodule&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;other_modules.anothermodule&#39;</span>)
 </code></pre></div><p>Notice that while requiring these files, we are not calling <code>.lua</code> extension.</p>
 <p>another thing to Remember if you are calling any <code>lua</code> file in your <code>init.vim</code> , you have to append <code>lua</code> before everyline:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">lua</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">lua</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">lua</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;other_modules.anothermodule&#39;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>just like this.</p>
 <p>Another thing to remenber if you want to call the whole <code>other_modules/</code> at once , you can simply call:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;other_modules&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">require(<span style="color:#e6db74">&#39;other_modules&#39;</span>)
 </code></pre></div><p>but in that case you have to have a <code>init.lua</code> under that directory.</p>
 <h5 id="tip">Tip</h5>
 <p>to call a bigger chunk of <code>Lua</code> code inside your <code>init.vim</code> , just call like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">lua</span> &lt;&lt; <span style="color:#a6e22e">EOF</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">lua</span> &lt;&lt; <span style="color:#a6e22e">EOF</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">local</span> <span style="color:#a6e22e">mod</span> = <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;myluamodule&#39;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">local</span> <span style="color:#a6e22e">chars</span> = {<span style="color:#e6db74">&#39;\&#39;</span>, <span style="color:#e6db74">&#39;|&#39;</span>, <span style="color:#e6db74">&#39;~&#39;</span>}<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
@@ -279,7 +279,7 @@ So we can write multi-functional and complex code with ease. So let&rsquo;s jump
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">chars</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">EOF</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>To source a lua file , just call in command mode:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">:<span style="color:#a6e22e">luafile</span> % # <span style="color:#a6e22e">for</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">current</span> <span style="color:#a6e22e">file</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">:<span style="color:#a6e22e">luafile</span> % # <span style="color:#a6e22e">for</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">current</span> <span style="color:#a6e22e">file</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>:<span style="color:#a6e22e">luafile</span> <span style="color:#a6e22e">some</span><span style="color:#e6db74">/thing/</span><span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">lua</span> # <span style="color:#a6e22e">for</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">certain</span> <span style="color:#a6e22e">file</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h5 id="luafile-vs-require">luafile vs require():</h5>
@@ -302,7 +302,7 @@ So we can write multi-functional and complex code with ease. So let&rsquo;s jump
 </ul>
 <h4 id="the-sets">The sets</h4>
 <p>The most common part of any <code>vim configuratins</code> is sets, like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">smarttab</span> <span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">smarttab</span> <span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">number</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">relativenumber</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">cursorline</span><span style="color:#960050;background-color:#1e0010">
@@ -323,7 +323,7 @@ So we can write multi-functional and complex code with ease. So let&rsquo;s jump
 <li><code>vim.env.{name}</code>: environment variables</li>
 </ul>
 <p>So now the sets will be like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Ignorecases</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Ignorecases</span>
 vim.o.ignorecase <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
 vim.o.smartcase <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
 
@@ -386,11 +386,11 @@ vim.o.laststatus <span style="color:#f92672">=</span> <span style="color:#ae81ff
 </code></pre></div><p>just like that &hellip;</p>
 <h4 id="the-keymappings">The Keymappings</h4>
 <p>In vimscript we write , the Keymappings like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">Leader</span> = <span style="color:#e6db74">&#34; &#34;</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">Leader</span> = <span style="color:#e6db74">&#34; &#34;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">Leader</span>&gt;<span style="color:#a6e22e">tg</span> :<span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;tg&#34;</span>&lt;<span style="color:#a6e22e">CR</span>&gt;<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>But in <code>Lua</code> , we can call it like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.g.mapleader <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.g.mapleader <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span>
 
 vim.api.nvim_set_keymap(<span style="color:#e6db74">&#39;n&#39;</span>, <span style="color:#e6db74">&#39;&lt;Leader&gt;tg&#39;</span>, <span style="color:#e6db74">&#39;:echo &#34;tg&#34;&lt;CR&gt;&#39;</span>, { noremap <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> , silent <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span> , expr <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>})
 </code></pre></div><p>Tutorial ,</p>
@@ -413,9 +413,9 @@ vim.api.nvim_set_keymap(<span style="color:#e6db74">&#39;n&#39;</span>, <span st
 </blockquote>
 <h4 id="calling-vim-command-inside-lua">Calling <code>vim command</code> inside <code>Lua</code></h4>
 <p>To call vim command in lua, do:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">&#34;the vim command ...&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">&#34;the vim command ...&#34;</span>)
 </code></pre></div><p>To call a multiline vim command in lua, call:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
 </span><span style="color:#e6db74">this is a
 </span><span style="color:#e6db74">multiline
 </span><span style="color:#e6db74">vim
@@ -427,7 +427,7 @@ To  achieve autocommand in <code>lua</code></p>
 <ul>
 <li>first approach</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
 </span><span style="color:#e6db74">augroup highlight_yank
 </span><span style="color:#e6db74">    autocmd!
 </span><span style="color:#e6db74">    autocmd TextYankPost * silent! lua require&#39;vim.highlight&#39;.on_yank({timeout = 40})
@@ -439,7 +439,7 @@ To  achieve autocommand in <code>lua</code></p>
 <ul>
 <li>second approach</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.api.nvim_exec(<span style="color:#e6db74">[[
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.api.nvim_exec(<span style="color:#e6db74">[[
 </span><span style="color:#e6db74">augroup highlight_yank
 </span><span style="color:#e6db74">    autocmd!
 </span><span style="color:#e6db74">    autocmd TextYankPost * silent! lua require&#39;vim.highlight&#39;.on_yank({timeout = 40})
@@ -454,7 +454,7 @@ To  achieve autocommand in <code>lua</code></p>
 <ul>
 <li>first approach</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">[[
 </span><span style="color:#e6db74">function! GitStatus()
 </span><span style="color:#e6db74">  let [a,m,r] = GitGutterGetHunkSummary()
 </span><span style="color:#e6db74">  return printf(&#39;+%d ~%d -%d&#39;, a, m, r)
@@ -478,7 +478,7 @@ vim.cmd(<span style="color:#e6db74">[[
 <ul>
 <li>second approach</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.api.nvim_exec(<span style="color:#e6db74">[[
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.api.nvim_exec(<span style="color:#e6db74">[[
 </span><span style="color:#e6db74">function! GitStatus()
 </span><span style="color:#e6db74">  let [a,m,r] = GitGutterGetHunkSummary()
 </span><span style="color:#e6db74">  return printf(&#39;+%d ~%d -%d&#39;, a, m, r)
@@ -498,7 +498,7 @@ vim.api.nvim_exec(<span style="color:#e6db74">[[
 </span><span style="color:#e6db74">]]</span>, <span style="color:#66d9ef">true</span>)
 </code></pre></div><h4 id="to-source-any-vim-file-in-lua">To Source any <code>.vim</code> file in lua</h4>
 <p>just call:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">&#34;source the/file/path/here.lua&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">vim.cmd(<span style="color:#e6db74">&#34;source the/file/path/here.lua&#34;</span>)
 </code></pre></div><h2 id="some-references">Some References</h2>
 <ul>
 <li><a href="https://github.com/nanotee/nvim-lua-guide">A verbose and full guide for lua Tutorial</a></li>
@@ -678,8 +678,8 @@ vim.api.nvim_exec(<span style="color:#e6db74">[[
             </div>
         </div>
     </div>
-
 </article>
+
 
 
 
