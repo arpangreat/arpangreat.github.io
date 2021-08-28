@@ -321,6 +321,7 @@ So we can write multi-functional and complex code with ease. So let&rsquo;s jump
 <li><code>vim.t.{name}</code>: tabpage variables</li>
 <li><code>vim.v.{name}</code>: predefined Vim variables</li>
 <li><code>vim.env.{name}</code>: environment variables</li>
+<li>and at last <code>vim.opt.{name}</code>: The Global wrapper for everything</li>
 </ul>
 <p>So now the sets will be like:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Ignorecases</span>
@@ -383,6 +384,67 @@ vim.o.ttimeoutlen <span style="color:#f92672">=</span> <span style="color:#ae81f
 vim.o.updatetime <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
 vim.o.shortmess <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I&#34;</span>
 vim.o.laststatus <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><p>Or Just with opt ( Highly Recommended )</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Ignorecases</span>
+vim.opt.ignorecase <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.smartcase <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+
+<span style="color:#75715e">-- Search</span>
+vim.opt.hlsearch <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.incsearch <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.inccommand <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;split&#34;</span>
+
+<span style="color:#75715e">-- Vim UI</span>
+vim.opt.smartindent <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.wrap <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.opt.colorcolumn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;120&#39;</span>
+vim.opt.showcmd <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.tabstop <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+vim.opt.softtabstop <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+vim.opt.signcolumn<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
+vim.opt.scrolloff <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
+vim.opt.showmode <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.opt.completeopt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;menuone,noinsert,noselect&#34;</span>
+vim.opt.hidden <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">-- vim.opt.include</span>
+vim.opt.display <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lastline&#34;</span>
+vim.opt.backspace <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;indent,eol,start&#34;</span>
+
+<span style="color:#75715e">-- Visuals</span>
+vim.opt.syntax <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;enable&#34;</span>
+<span style="color:#75715e">-- vim.opt.filetype = &#34;plugin on&#34;</span>
+vim.opt.t_Co<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;256&#34;</span>
+<span style="color:#75715e">-- vim.api.nvim_set_optption(&#39;t_Co&#39;,256)</span>
+vim.opt.termguicolors <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">-- vim.opt.encodingvim.o.hidden = true</span>
+vim.opt.include <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+vim.opt.display <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lastline&#34;</span>
+vim.opt.encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>
+<span style="color:#75715e">-- vim.opt.winblend = 100</span>
+<span style="color:#75715e">-- vim.api.nvim_exec([[set winblend=100]], true)</span>
+<span style="color:#75715e">-- Numbers</span>
+vim.opt.number <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.relativenumber <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.cursorline <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">-- vim.opt.cursorcolumn = true</span>
+
+<span style="color:#75715e">-- Utils</span>
+vim.opt.compatible <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.opt.mouse<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;a&#39;</span>
+vim.opt.autoindent <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.backup <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.opt.undofile <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+vim.opt.undodir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;~/.vim/undodir&#34;</span>
+vim.opt.swapfile <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+vim.opt.shada<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;!,&#39;1000,&lt;50,s10,h&#34;</span>
+vim.opt.viminfo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#39;100,n$HOME/.vim/files/info/viminfo&#34;</span>
+vim.opt.clipboard <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;unnamedplus&#34;</span>
+
+<span style="color:#75715e">-- Times</span>
+vim.opt.ttimeoutlen <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+vim.opt.updatetime <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+vim.opt.shortmess <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I&#34;</span>
+vim.opt.laststatus <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
 </code></pre></div><p>just like that &hellip;</p>
 <h4 id="the-keymappings">The Keymappings</h4>
 <p>In vimscript we write , the Keymappings like:</p>
